@@ -23,16 +23,10 @@
 
 <script>
   import data from '../data'
-
   export default {
-    methods: {
-      dsiplayDetails (id) {
-        this.$router.push({name: 'detail', params: {id: id}})
-      },
-      data () {
-        return {
-          'pictures': data.pictures
-        }
+    data () {
+      return {
+        'pictures': data.pictures
       }
     }
   }
