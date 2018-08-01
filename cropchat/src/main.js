@@ -5,8 +5,10 @@ import App from './App'
 import router from './router'
 import Vuefire from 'vuefire'
 import firebase from './service/firebase'
+import VueResource from 'vue-resource'
 
 Vue.use(Vuefire)
+Vue.use(VueResource)
 
 Vue.config.productionTip = false
 
@@ -14,7 +16,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   firebase: {
-    cat: firebase.database.ref('car').orderByChild('created_at')
+    cat: firebase.database.ref('cat').orderByChild('created_at')
   },
   router,
   template: '<App/>',
