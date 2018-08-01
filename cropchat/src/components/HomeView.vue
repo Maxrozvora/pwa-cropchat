@@ -20,7 +20,6 @@
 </template>
 
 <script>
-  import data from '../data'
   export default {
     methods: {
       displayDetails (id) {
@@ -28,9 +27,7 @@
       }
     },
     data () {
-      return {
-        'pictures': data.pictures
-      }
+      return {}
     }
   }
 </script>
