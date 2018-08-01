@@ -22,7 +22,31 @@
 </template>
 
 <script>
-  export default {}
+  import parse from 'xml-parser'
+  export default {
+    data () {
+      return {
+        catUrl: null
+      }
+    },
+    mounted () {
+      this.$http.get('https://thecatapi.com/api/images/get?format=xml&results_per_page=1')
+        .then(responce => {
+          this.catUrl = parse(responce.body).root.children['0'].children['0'].children['0'].children['0'].content
+        })
+    },
+    methods: {
+      postCat () {
+        this.$root.$firebaseRefs.cat.push({
+          url: this.catUrl,
+          comment: this.title,
+          info: 'Posted bu Max on Wednesday',
+          created_at: -1 * new Date().getTime()
+        })
+          .then(this.$router.push('./'))
+      }
+    }
+  }
 </script>
 
 <style scoped>
